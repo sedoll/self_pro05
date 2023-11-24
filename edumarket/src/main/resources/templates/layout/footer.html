@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="footerFragment">
+    <footer class="footer">
+        <div class="footer-area">
+            <div class="container">
+                <div class="row section_gap">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title large_title">Our Mission</h4>
+                            <p>
+                                선생님들을 위한 편리한 <br> 중고거래 플랫폼, 에듀마켓!
+                            </p>
+                            <p>
+                                교육계 커뮤니티에서 안전하고 간편하게 교구 및 교재를 거래하세요!
+                            </p>
+                            <p>
+                                선생님들과 손 쉽게 자료를 공유하고 교육 환경을 발전시켜 보아요!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Quick Links</h4>
+                            <ul class="list">
+                                <li><a th:href="@{/}">Home</a></li>
+                                <li><a th:href="@{/common/productList}">중고상품</a></li>
+                                <li><a th:href="@{/notice/noticeList}">공지사항</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Information</h4>
+                            <ul class="list">
+                                <li><a href="#">개인정보처리방침</a></li>
+                                <li><a href="#">이용약관</a></li>
+                                <li><a href="#">분쟁처리절차</a></li>
+                                <li><a href="#">청소년보호정책</a></li>
+                                <li><a href="#">사업자정보확인</a></li>
+                                <li><a href="#">에듀마켓 고객센터</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Contact Us</h4>
+                            <div class="ml-40">
+                                <p class="sm-head">
+                                    <span class="fa fa-location-arrow"></span>
+                                    Head Office
+                                </p>
+                                <p>서울 금천구 가산로 5길 61</p>
+
+                                <p class="sm-head">
+                                    <span class="fa fa-phone"></span>
+                                    Phone Number
+                                </p>
+                                <p>
+                                    02-1234-5678 <br>
+                                    02-9101-1121
+                                </p>
+
+                                <p class="sm-head">
+                                    <span class="fa fa-envelope"></span>
+                                    Email
+                                </p>
+                                <p>
+                                    ADMIN@edumarket.com <br>
+                                    www.edumarket.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row d-flex">
+                    <p class="col-lg-12 footer-text text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script th:src="@{/vendors/bootstrap/bootstrap.bundle.min.js}" th:inline="javascript"></script>
+    <script th:src="@{/vendors/skrollr.min.js}" th:inline="javascript"></script>
+    <script th:src="@{/vendors/owl-carousel/owl.carousel.min.js}" th:inline="javascript"></script>
+    <script th:src="@{/vendors/jquery.ajaxchimp.min.js}" th:inline="javascript"></script>
+    <script th:src="@{/vendors/mail-script.js}" th:inline="javascript"></script>
+    <script th:src="@{/js/main.js}" th:inline="javascript"></script>
+    <script th:src="@{/js/badwords.js}" th:inline="javascript"></script>
+</th:block>
+</html>

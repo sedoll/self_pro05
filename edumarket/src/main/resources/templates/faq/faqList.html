@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/head :: head">
+    <title>자주 묻는 질문</title>
+    <link href="https://cdn.jsdelivr.net/npm/bulma-accordion@2.0.1/dist/css/bulma-accordion.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div th:replace="layout/header :: header"></div>
+
+<!-- ================ start banner area ================= -->
+<section class="blog-banner-area" id="category">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>자주 묻는 질문</h1>
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">
+                            궁금해 하시는 질문들을 모아 셀파몰이 정리해두었어요!
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+<div class="container mt-5 pt-5 mb-5 pb-5">
+    <div class="wrapper" th:each="faq, status : ${faqList}" th:status="status">
+        <div class="d-flex justify-content-between align-items-center p-4" style="border-top: 2px solid; cursor: pointer"
+             th:id="|question${status.count}|">
+            <h5 class="mb-0 pb-0" th:utext="${status.count} + '. &nbsp;&nbsp;' + ${faq.question}"></h5>
+            <i class="fa-solid fa-plus"></i>
+        </div>
+        <div th:id="|answer${status.count}|" style="display: none" class="bg-light p-4">
+            <p th:utext="${faq.answer}"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        $("div[id^=question]").click(function() {
+            console.log($(this).next("div[id^=answer]"));
+            $(this).next("div[id^=answer]").slideToggle(300);
+        });
+    });
+</script>
+<div th:replace="layout/footer :: footer"></div>
+</body>
+</html>

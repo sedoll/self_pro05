@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅</title>
+    <th:block th:replace="layout/head :: headFragment"></th:block>
+    <style>
+        #chat {
+            height: 500px;
+            max-width: 500px;
+            overflow-y: scroll;
+            margin: 10px auto;
+        }
+
+        .input-group{
+            max-width: 500px;
+            margin: 10px auto;
+        }
+
+        /* 내가 보낸 메시지 */
+        .my-message {
+            margin-left: 80px;
+            background-color: #0084ff;
+            color: #FFF;
+            border-radius: 15px;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            word-break:break-all;
+        }
+
+        /* 다른 사람이 보낸 메시지 */
+        .others-message {
+            margin-right: 80px;
+            background-color: #E2E2E2;
+            color: #333;
+            border-radius: 15px;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            word-break:break-all;
+        }
+    </style>
+</head>
+<body>
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
+<!-- ================ start banner area ================= -->
+<section class="blog-banner-area" id="category">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>채팅</h1>
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">채팅</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+<div style="min-height: 100vh">
+    <div class="container con-tb">
+        <div>
+            <div id="chat">
+                <th:block th:each="msg : ${chat}">
+                    <div th:class="${msg.sender == #authentication.principal ? 'my-message' : 'others-message'}">
+                        [[${msg.message}]]
+                    </div>
+                </th:block>
+                <div class="msgArea"></div>
+            </div>
+        </div>
+        <div class="input-group">
+            <input type="text" class="form-control" id="content" maxlength="200" placeholder="보낼 메세지를 입력하세요." onkeyup="enterkey()" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <input type="hidden" id="id" th:value="${#authentication.principal}">
+                <input type="hidden" id="roomId" th:value="${roomId}" />
+                <button type="button" class="btn btn btn-outline-primary" id="sendBtn" onclick="sendMsg()">전송</button>
+                <button type="button" class="btn btn-outline-warning" onclick="rst()">초기화</button>
+            </div>
+            <br>
+            <div class="input-group">
+                <button type="button" class="btn btn-outline-danger" onclick="quit()">방 나가기</button>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+<!-- region websocket, 채팅 부분 js -->
+<script th:src="@{/js/chat.js}" th:inline="javascript"></script>
+<!-- endregion -->
+
+
+</body>
+</html>
